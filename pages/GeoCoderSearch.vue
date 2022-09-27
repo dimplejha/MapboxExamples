@@ -4,6 +4,11 @@
       href="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css"
+      type="text/css"
+    />
   </head>
   <div id="map"></div>
   <v-map
@@ -16,10 +21,10 @@
 <script setup lang="ts">
 import VMap from "v-mapbox";
 import mapboxgl from "mapbox-gl";
+import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 
 mapboxgl.accessToken =
   "pk.eyJ1Ijoic29jaWFsZXhwbG9yZXIiLCJhIjoiREFQbXBISSJ9.dwFTwfSaWsHvktHrRtpydQ";
-//const data: string;
 const state = reactive({
   map: {
     container: "map",
@@ -31,7 +36,16 @@ const state = reactive({
 });
 
 function onMapLoaded(map: mapboxgl.Map) {
-  map.addControl(new mapboxgl.FullscreenControl());
+  const geocoder = new MapboxGeocoder({
+    accessToken:
+      "pk.eyJ1Ijoic29jaWFsZXhwbG9yZXIiLCJhIjoiREFQbXBISSJ9.dwFTwfSaWsHvktHrRtpydQ",
+    marker: {
+      color: "orange",
+    },
+    mapboxgl: mapboxgl,
+  });
+
+  map.addControl(geocoder);
 }
 </script>
 
@@ -43,6 +57,11 @@ function onMapLoaded(map: mapboxgl.Map) {
   top: 0;
   bottom: 0;
   width: 100%;
+}
+
+#geocoder-container > div {
+  min-width: 50%;
+  margin-left: 25%;
 }
 </style>
 

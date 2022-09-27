@@ -19,7 +19,6 @@ import mapboxgl from "mapbox-gl";
 
 mapboxgl.accessToken =
   "pk.eyJ1Ijoic29jaWFsZXhwbG9yZXIiLCJhIjoiREFQbXBISSJ9.dwFTwfSaWsHvktHrRtpydQ";
-//const data: string;
 const state = reactive({
   map: {
     container: "map",
@@ -29,10 +28,6 @@ const state = reactive({
     maxZoom: 22,
   },
 });
-
-function onMapLoaded(map: mapboxgl.Map) {
-  map.addControl(new mapboxgl.FullscreenControl());
-}
 </script>
 
 

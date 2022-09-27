@@ -5,6 +5,8 @@
       rel="stylesheet"
     />
   </head>
+  <div id="map"></div>
+
   <v-map class="w-full h-full" :options="state.map" @loaded="onMapLoaded" />
 </template>
 
@@ -20,9 +22,9 @@ const state = reactive({
   map: {
     accessToken:
       "pk.eyJ1Ijoic29jaWFsZXhwbG9yZXIiLCJhIjoiREFQbXBISSJ9.dwFTwfSaWsHvktHrRtpydQ",
-    style: "mapbox://styles/mapbox/streets-v11?optimize=true",
+    style: "mapbox://styles/mapbox/streets-v11",
     center: [444.04931277036667, 26.266912177018096] as number[], //uses longitude, latitude
-    zoom: 6,
+    //zoom: 6,
     maxZoom: 22,
   },
 });
